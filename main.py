@@ -18,10 +18,12 @@ while len(guessed_states)<50:
     #askk the user
     answer= screen.textinput(title=f" {len(guessed_states)} State Name ",prompt="Enter a state name: ").title()
     if answer == "Exit":
-        missing_states=[]
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        # missing_states=[]
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
+        #list comprehension
+        missing_states = [state for state in all_states if state not in guessed_states ]
         new_data = pandas.DataFrame(missing_states)
         # Generate the CSV file and the wrong states names.
         new_data.to_csv("States_to_memorize.csv")
